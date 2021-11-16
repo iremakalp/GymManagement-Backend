@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using Business.Constants;
+using Core.Aspect.Validation;
+using Business.ValidationRules.FluentValidation;
 
 namespace Business.Concrete
 {
@@ -18,6 +20,7 @@ namespace Business.Concrete
         {
             _memberDal = memberDal;
         }
+        [ValidationAspect(typeof(MemberValidator))]
         public IResult Add(Member member)
         {
             _memberDal.Add(member);
